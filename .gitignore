@@ -1,0 +1,4 @@
+.DS_Store
+sites/www/public/tests/results
+logs/
+.env

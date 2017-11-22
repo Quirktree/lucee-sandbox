@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build: ./docker/lucee
+    ports:
+     - "80:8888"
+    volumes:
+      - ./sites/www:/var/html/www
+      - $HOME/.aws:/root/.aws
+    environment:
+     - LUCEE_PASSWORD
+     - MYSQL_ROOT_PASSWORD
+     - MYSQL_HOST
+     - MYSQL_DATABASE
+     - AWS_PROFILE
+     - AWS_REGION
+  appdb:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+  fakesmtp:
+    image: digiplant/fake-smtp
+    ports:
+      - "1025:25"
+    volumes:
+      - ./logs/email:/var/mail
