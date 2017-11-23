@@ -1,10 +1,38 @@
-# Host Configuration
+# Prerequisites
 
-Modify the `/etc/hosts` file on the local system to resolve the sandbox.local domain name to 127.0.0.1.
+This repository includes assets that make use of the Large File Storage (LFS) extensions for `git`. In order to properly clone the repository and run the container, you will need to install `git-lfs` in the host environment.
+
+___NOTE:__ `git-lfs` requires version 1.8.2 or later of `git`. You can check which version is currently installed by running `git --version`.
+
+```
+brew install git # (Optional) Install the latest version of git using Homebrew on macOS
+
+brew install git-lfs # Install to git-lfs system using Homebrew on macOS
+
+git lfs install # Configure git for LFS repositories
+```
+
+The repository includes Docker configuration to launch a copy of Lucee 5 within a Docker container. 
+
+[Download](https://store.docker.com/editions/community/docker-ce-desktop-mac) and run the Docker Community Edition installer from the Docker Store.
 
 # Environment
 
-Create a .env file in the root of the directory to specify the given environment variables:
+Modify the `/etc/hosts` file on the local system to resolve the sandbox.local domain name to 127.0.0.1.
+
+```
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+127.0.0.1       sandbox.local
+```
+Create a .env file in the root of the directory defining the following required variables for your local environment, modifying the values to suit your requirements.
 
 ```
 LUCEE_PASSWORD=password
