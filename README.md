@@ -4,7 +4,7 @@ This repository includes assets that make use of the Large File Storage (LFS) ex
 
 ___NOTE:__ `git-lfs` requires version 1.8.2 or later of `git`. You can check which version is currently installed by running `git --version`.
 
-```
+```bash
 brew install git # (Optional) Install the latest version of git using Homebrew on macOS
 
 brew install git-lfs # Install to git-lfs system using Homebrew on macOS
@@ -46,3 +46,15 @@ AWS_REGION=us-west-2
 # Application
 
 Lucee will map the _sandbox.local_ hostname to `./sites/www/public`, meaning the `application.cfc` and `index.cfm` should be created at this location. 
+
+Launch the local hosting environment using `docker-compose`:
+
+```bash
+docker-compose up # Launch the specified service containers
+```
+
+When making modifications to the server configuration, e.g, introducing new Java dependencies outside of the source path, you will need to instruct Docker to rebuild the services:
+
+```bash
+docker-compose build # Force Docker to rebuild the container with dependencies
+```
